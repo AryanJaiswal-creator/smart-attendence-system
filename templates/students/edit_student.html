@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning">
+
+            <h3>Edit Student</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label>Student Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            value="{{ student.name }}"
+                            required>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Class</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="student_class"
+                            value="{{ student.student_class }}"
+                            required>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <label>Section</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="section"
+                            value="{{ student.section }}"
+                            required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Roll Number</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="roll_number"
+                            value="{{ student.roll_number }}"
+                            required>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Father Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="father_name"
+                            value="{{ student.father_name }}">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label>Mother Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="mother_name"
+                            value="{{ student.mother_name }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Phone</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="phone"
+                            value="{{ student.phone }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            value="{{ student.email }}">
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Address</label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            name="address">{{ student.address }}</textarea>
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success">
+                    Update Student
+                </button>
+
+                <a href="{{ url_for('students.students') }}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

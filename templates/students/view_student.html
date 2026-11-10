@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Student Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>Student Profile</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-3 text-center">
+
+                    {% if student.photo %}
+
+                    <img
+                        src="{{ url_for('static', filename='uploads/students/' + student.photo) }}"
+                        class="img-fluid rounded border"
+                        width="180">
+
+                    {% else %}
+
+                    <p>No Photo</p>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <table class="table">
+
+                        <tr>
+                            <th>Student Code</th>
+                            <td>{{ student.student_code }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ student.name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Class</th>
+                            <td>{{ student.student_class }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Section</th>
+                            <td>{{ student.section }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Roll Number</th>
+                            <td>{{ student.roll_number }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Father</th>
+                            <td>{{ student.father_name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Mother</th>
+                            <td>{{ student.mother_name }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ student.phone }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ student.email }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ student.address }}</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+                <div class="col-md-3 text-center">
+
+                    {% if student.qr_code %}
+
+                    <img
+                        src="{{ url_for('static', filename='qrcodes/' + student.qr_code) }}"
+                        class="img-fluid border"
+                        width="180">
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

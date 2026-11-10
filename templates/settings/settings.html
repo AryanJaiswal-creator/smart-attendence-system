@@ -1,0 +1,502 @@
+{% extends "base.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2>⚙️ System Settings</h2>
+
+            <p class="text-muted mb-0">
+                Configure your Smart Classroom system
+            </p>
+        </div>
+
+    </div>
+
+
+    <form method="POST">
+
+
+        <!-- =========================================
+             GENERAL
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+                <h5 class="mb-0">
+                    ⚙️ General Settings
+                </h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            School / System Name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="school_name"
+                            value="{{ settings.get('school_name', 'Smart Classroom Entry Monitoring System') }}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Academic Year
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="academic_year"
+                            value="{{ settings.get('academic_year', '2026-2027') }}"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             SYSTEM
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    💻 System Operation
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-info">
+
+                    <strong>System operating hours</strong>
+
+                    <br>
+
+                    The camera and attendance system will operate
+                    only during these hours.
+
+                    <br>
+
+                    Leave both fields empty to keep the system
+                    active all day.
+
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            System Start Time
+                        </label>
+
+                        <input
+                            type="time"
+                            name="system_start_time"
+                            class="form-control"
+                            value="{{ settings.get('system_start_time', '') }}"
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            System Stop Time
+                        </label>
+
+                        <input
+                            type="time"
+                            name="system_stop_time"
+                            class="form-control"
+                            value="{{ settings.get('system_stop_time', '') }}"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             ATTENDANCE
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    📅 Attendance Settings
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+
+                    <!-- Entry Start -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Entry Start
+                        </label>
+
+                        <input
+                            type="time"
+                            name="entry_start_time"
+                            class="form-control"
+                            value="{{ settings.get('entry_start_time', '08:00') }}"
+                        >
+
+                        <small class="text-muted">
+                            Entry scanning begins.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Entry End -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Entry End
+                        </label>
+
+                        <input
+                            type="time"
+                            name="entry_end_time"
+                            class="form-control"
+                            value="{{ settings.get('entry_end_time', '09:00') }}"
+                        >
+
+                        <small class="text-muted">
+                            Normal entry period ends.
+                        </small>
+
+                    </div>
+
+
+                    <!-- QR Timeout -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            QR Timeout
+                        </label>
+
+                        <div class="input-group">
+
+                            <input
+                                type="number"
+                                name="qr_scan_timeout"
+                                class="form-control"
+                                min="1"
+                                max="60"
+                                value="{{ settings.get('qr_scan_timeout', '5') }}"
+                            >
+
+                            <span class="input-group-text">
+                                seconds
+                            </span>
+
+                        </div>
+
+                        <small class="text-muted">
+                            Time allowed to scan after motion.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             LUNCH
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    🍱 Lunch Break
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+
+                    <!-- Lunch Start -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Lunch Start
+                        </label>
+
+                        <input
+                            type="time"
+                            name="lunch_start"
+                            class="form-control"
+                            value="{{ settings.get('lunch_start', '11:00') }}"
+                        >
+
+                    </div>
+
+
+                    <!-- Lunch Duration -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Lunch Duration
+                        </label>
+
+                        <div class="input-group">
+
+                            <input
+                                type="number"
+                                name="lunch_duration"
+                                class="form-control"
+                                min="1"
+                                max="180"
+                                value="{{ settings.get('lunch_duration', '20') }}"
+                            >
+
+                            <span class="input-group-text">
+                                minutes
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             CAMERA
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    📷 Camera Settings
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row">
+
+
+                    <!-- Camera Source -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Camera Source
+                        </label>
+
+                        <select
+                            class="form-select"
+                            name="camera_source"
+                        >
+
+                            <option
+                                value="USB Camera"
+                                {% if settings.get('camera_source', 'USB Camera') == 'USB Camera' %}
+                                    selected
+                                {% endif %}
+                            >
+                                USB Camera
+                            </option>
+
+                            <option
+                                value="ESP32-CAM"
+                                {% if settings.get('camera_source') == 'ESP32-CAM' %}
+                                    selected
+                                {% endif %}
+                            >
+                                ESP32-CAM
+                            </option>
+
+                            <option
+                                value="IP Camera"
+                                {% if settings.get('camera_source') == 'IP Camera' %}
+                                    selected
+                                {% endif %}
+                            >
+                                IP Camera
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Resolution -->
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Camera Resolution
+                        </label>
+
+                        <select
+                            class="form-select"
+                            name="camera_resolution"
+                        >
+
+                            <option
+                                value="1280x720"
+                                {% if settings.get('camera_resolution', '1280x720') == '1280x720' %}
+                                    selected
+                                {% endif %}
+                            >
+                                1280 × 720
+                            </option>
+
+                            <option
+                                value="1920x1080"
+                                {% if settings.get('camera_resolution') == '1920x1080' %}
+                                    selected
+                                {% endif %}
+                            >
+                                1920 × 1080
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             SECURITY
+        ========================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header">
+
+                <h5 class="mb-0">
+                    🔒 Security
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="form-check form-switch">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="auto_logout"
+                        id="autoLogout"
+                        value="true"
+                        {% if settings.get('auto_logout', 'false') == 'true' %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <label
+                        class="form-check-label"
+                        for="autoLogout"
+                    >
+                        Enable automatic logout
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================================
+             ACTIONS
+        ========================================== -->
+
+        <div class="d-flex gap-2 mb-5">
+
+            <button
+                type="submit"
+                class="btn btn-success px-4"
+            >
+                💾 Save Settings
+            </button>
+
+            <a
+                href="{{ url_for('settings.settings') }}"
+                class="btn btn-secondary px-4"
+            >
+                Reset
+            </a>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+{% endblock %}

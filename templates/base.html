@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        {% block title %}
+        Smart Classroom Entry Monitoring System
+        {% endblock %}
+
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background: #f5f7fb;
+            margin: 0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: #0d6efd;
+            color: white;
+            padding-top: 20px;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: .3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, .15);
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 25px;
+        }
+
+        .navbar-custom {
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+        }
+
+        .table {
+            background: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h3>SCEMS</h3>
+
+        <a href="{{ url_for('dashboard.dashboard') }}">
+            <i class="bi bi-speedometer2"></i>
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('students.students') }}">
+            <i class="bi bi-people-fill"></i>
+            Students
+        </a>
+
+        <a href="{{ url_for('attendance.attendance') }}">
+            <i class="bi bi-calendar-check"></i>
+            Attendance
+        </a>
+        <li class="nav-item">
+
+            <a class="nav-link" href="{{ url_for('scanner.scanner') }}">
+
+                <i class="bi bi-qr-code-scan"></i>
+
+                QR Scanner
+
+            </a>
+
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('reports.reports') }}">
+                <i class="fas fa-file-alt"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+
+        <a href="{{ url_for('settings.settings') }}">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="content">
+
+        <!-- Top Navbar -->
+
+        <div class="navbar-custom d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+
+                Smart Classroom Entry Monitoring System
+
+            </h4>
+
+            <span class="text-muted">
+
+                Admin Panel
+
+            </span>
+
+        </div>
+
+        <!-- Flash Messages -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+        {% for category, message in messages %}
+
+        <div class="alert alert-{{ category }} alert-dismissible fade show">
+
+            {{ message }}
+
+            <button type="button" class="btn-close" data-bs-dismiss="alert">
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% endwith %}
+
+        <!-- Page Content -->
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>

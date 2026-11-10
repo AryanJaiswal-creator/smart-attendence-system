@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Attendance
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Attendance Records
+</h2>
+
+<div class="card shadow">
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-striped">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Student</th>
+                    <th>Date</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for record in records %}
+
+                <tr>
+
+                    <td>{{ record.student.name }}</td>
+
+                    <td>{{ record.attendance_date }}</td>
+
+                    <td>{{ record.entry_time or "-" }}</td>
+
+                    <td>{{ record.exit_time or "-" }}</td>
+
+                    <td>{{ record.status }}</td>
+
+                </tr>
+
+            {% else %}
+
+                <tr>
+
+                    <td colspan="5" class="text-center">
+
+                        No attendance records found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Attendance
+{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">Attendance Records</h2>
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Student Code</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+{% if attendance %}
+
+    {% for record in attendance %}
+
+    <tr>
+
+        <td>{{ record.student.student_code }}</td>
+
+        <td>{{ record.student.name }}</td>
+
+        <td>{{ record.scan_date.strftime('%d-%m-%Y') }}</td>
+
+        <td>{{ record.scan_time.strftime('%H:%M:%S') }}</td>
+
+        <td>
+
+            {% if record.scan_type == "ENTRY" %}
+
+                <span class="badge bg-success">
+
+                    ENTRY
+
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-danger">
+
+                    EXIT
+
+                </span>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+{% else %}
+
+    <tr>
+
+        <td colspan="5" class="text-center">
+
+            No attendance found.
+
+        </td>
+
+    </tr>
+
+{% endif %}
+
+</tbody>
+
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

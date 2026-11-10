@@ -1,0 +1,242 @@
+/* ===========================
+   Google Font
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+/* ===========================
+        Wrapper
+=========================== */
+
+.wrapper{
+    display:flex;
+}
+
+/* ===========================
+        Sidebar
+=========================== */
+
+.sidebar{
+
+    width:260px;
+    height:100vh;
+
+    background:#1E3A8A;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    color:white;
+
+    overflow-y:auto;
+
+}
+
+.logo{
+
+    padding:25px;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.logo h3{
+
+    font-weight:600;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    padding:20px 0;
+
+}
+
+.sidebar ul li{
+
+    margin:5px 0;
+
+}
+
+.sidebar ul li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 25px;
+
+    transition:.3s;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:#2563EB;
+
+    padding-left:35px;
+
+}
+
+.sidebar ul li.active a{
+
+    background:#2563EB;
+
+}
+
+/* ===========================
+        Main
+=========================== */
+
+.main{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+}
+
+/* ===========================
+        Navbar
+=========================== */
+
+.navbar-custom{
+
+    background:white;
+
+    height:70px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+.navbar-custom h4{
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+        Content
+=========================== */
+
+.content{
+
+    padding:30px;
+
+}
+
+/* ===========================
+        Cards
+=========================== */
+
+.card{
+
+    border:none;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.card h2{
+
+    font-size:34px;
+
+    font-weight:bold;
+
+}
+
+.card h5{
+
+    color:#555;
+
+}
+
+/* ===========================
+        Responsive
+=========================== */
+
+@media(max-width:992px){
+
+.sidebar{
+
+    width:80px;
+
+}
+
+.sidebar .logo h3{
+
+    display:none;
+
+}
+
+.sidebar ul li a{
+
+    justify-content:center;
+
+}
+
+.sidebar ul li a{
+
+    font-size:22px;
+
+}
+
+.sidebar ul li a i{
+
+    margin:0;
+
+}
+
+.main{
+
+    margin-left:80px;
+
+    width:calc(100% - 80px);
+
+}
+
+}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance Report{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2>Attendance Report</h2>
+            <p class="text-muted">{{ report_name }}</p>
+        </div>
+
+        <button onclick="window.print()"
+                class="btn btn-success">
+
+            Print
+
+        </button>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                            <th>{{ column }}</th>
+
+                        {% endfor %}
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for row in rows %}
+
+                    <tr>
+
+                        {% for column in columns %}
+
+                            <td>{{ row[column] }}</td>
+
+                        {% endfor %}
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

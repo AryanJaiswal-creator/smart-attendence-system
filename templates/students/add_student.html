@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h3>Add New Student</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <div class="row">
+
+                    <!-- Student Name -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Student Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="name"
+                            required>
+                    </div>
+
+                    <!-- Class -->
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Class</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="student_class"
+                            required>
+                    </div>
+
+                    <!-- Section -->
+                    <div class="col-md-3 mb-3">
+                        <label class="form-label">Section</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="section"
+                            required>
+                    </div>
+
+                    <!-- Roll Number -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Roll Number</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="roll_number"
+                            required>
+                    </div>
+
+                    <!-- Father Name -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Father Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="father_name">
+                    </div>
+
+                    <!-- Mother Name -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Mother Name</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="mother_name">
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Phone</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="phone">
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                            type="email"
+                            class="form-control"
+                            name="email">
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Address</label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            name="address"></textarea>
+                    </div>
+
+                    <!-- Student Photo -->
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">
+                            Student Photo
+                        </label>
+
+                        <input
+                            type="file"
+                            class="form-control"
+                            name="photo"
+                            accept=".jpg,.jpeg,.png">
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+
+                    Save Student
+
+                </button>
+
+                <a
+                    href="{{ url_for('students.students') }}"
+                    class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
